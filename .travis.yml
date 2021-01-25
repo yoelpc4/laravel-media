@@ -1,0 +1,36 @@
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+language: php
+
+env:
+  global:
+    - XDEBUG_MODE=coverage
+
+matrix:
+  include:
+    - php: 7.3
+      env: LARAVEL='8.*' 'TESTBENCH='6.*' PHPUNIT='9.*'
+    - php: 7.2
+      env: LARAVEL='7.*' 'TESTBENCH='5.*' PHPUNIT='8.4.*'
+    - php: 7.2
+      env: LARAVEL='6.*' 'TESTBENCH='4.*' PHPUNIT='8.3.*'
+  fast_finish: true
+
+before_script:
+  - composer config discard-changes true
+
+before_install:
+  - travis_retry composer self-update
+  - travis_retry composer require "laravel/framework:${LARAVEL}" "orchestra/testbench:${TESTBENCH}" "phpunit/phpunit:${PHPUNIT}" --no-interaction --no-update
+
+install:
+  - travis_retry composer install --prefer-dist --no-interaction --no-suggest
+
+script:
+  - vendor/bin/phpunit
+
+after_success:
+  - curl --data-binary @codecov.yml https://codecov.io/validate
+  - bash <(curl -s https://codecov.io/bash)
