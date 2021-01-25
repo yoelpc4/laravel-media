@@ -12,7 +12,6 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Yoelpc4\LaravelMedia\MediaServiceProvider;
 use Yoelpc4\LaravelMedia\Tests\Models\User;
 use Yoelpc4\LaravelMedia\Tests\Models\Post;
-use Yoelpc4\LaravelMedia\Tests\Models\UserWithMorphMap;
 
 abstract class TestCase extends OrchestraTestCase
 {
@@ -129,8 +128,8 @@ abstract class TestCase extends OrchestraTestCase
     protected function setUpMorphMap()
     {
         Relation::morphMap([
-            'users' => User::class,
-            'posts' => Post::class,
+            'user' => User::class,
+            'post' => Post::class,
         ]);
     }
 
