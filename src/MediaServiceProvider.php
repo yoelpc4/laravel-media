@@ -34,7 +34,7 @@ class MediaServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-media');
 
         $this->publishes([
-            __DIR__.'/../config/media.php' => config_path('media'),
+            __DIR__.'/../config/media.php' => config_path('media.php'),
         ], 'config');
 
         if (!class_exists('CreateMediasTable')) {

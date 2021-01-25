@@ -26,19 +26,19 @@ composer require yoelpc4/laravel-media
 Publish package configuration via command:
 
 ```shell
-php artisan vendor:publish --provider="\Yoelpc4\LaravelMedia\MediaServiceProvider" --tag=config
+php artisan vendor:publish --provider="Yoelpc4\LaravelMedia\MediaServiceProvider" --tag=config
 ```
 
 Publish package migrations via command:
 
 ```shell
-php artisan vendor:publish --provider="\Yoelpc4\LaravelMedia\MediaServiceProvider" --tag=migrations
+php artisan vendor:publish --provider="Yoelpc4\LaravelMedia\MediaServiceProvider" --tag=migrations
 ```
 
 Publish package resources via command:
 
 ```shell
-php artisan vendor:publish --provider="\Yoelpc4\LaravelMedia\MediaServiceProvider" --tag=resources
+php artisan vendor:publish --provider="Yoelpc4\LaravelMedia\MediaServiceProvider" --tag=resources
 ```
 
 ## Configure
@@ -237,19 +237,12 @@ So consider carefully prior to install this package.
 The Laravel Media is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
 [ico-packagist]: https://img.shields.io/packagist/v/yoelpc4/laravel-media.svg?style=flat-square
-
 [ico-downloads]: https://img.shields.io/packagist/dt/yoelpc4/laravel-media.svg?style=flat-square
-
 [ico-build]: https://travis-ci.com/yoelpc4/laravel-media.svg?branch=master&style=flat-square
-
 [ico-code-coverage]: https://codecov.io/gh/yoelpc4/laravel-media/branch/master/graph/badge.svg?style=flat-square
-
 [ico-license]: https://img.shields.io/packagist/l/yoelpc4/laravel-media.svg?style=flat-square
-
 [ico-code-of-conduct]: https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg
 
 [link-packagist]: https://packagist.org/packages/yoelpc4/laravel-media
-
 [link-build]: https://travis-ci.com/yoelpc4/laravel-media
-
 [link-code-coverage]: https://codecov.io/gh/yoelpc4/laravel-media
