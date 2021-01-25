@@ -37,9 +37,9 @@ class MediaServiceProvider extends ServiceProvider
             __DIR__.'/../config/media.php' => config_path('media.php'),
         ], 'config');
 
-        if (!class_exists('CreateMediasTable')) {
+        if (! class_exists('CreateMediasTable')) {
             $this->publishes([
-                __DIR__.'/../database/migrations/create_medias_table.php.stub' => database_path('migrations'.date('Y_m_d_His', time()).'_create_medias_table.php'),
+                __DIR__.'/../database/migrations/create_medias_table.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_medias_table.php'),
             ], 'migrations');
         }
 
