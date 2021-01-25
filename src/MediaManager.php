@@ -123,7 +123,9 @@ class MediaManager
             throw $e;
         }
 
-        $media = new Media;
+        $mediaClass = config('media.model');
+
+        $media = new $mediaClass;
 
         $media->group = $mediaGroupName;
 
