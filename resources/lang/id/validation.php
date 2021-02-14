@@ -3,6 +3,6 @@
 return [
     'attributes' => [
         'file'  => 'berkas',
-        'group' => 'group',
+        'group' => 'grup',
     ],
 ];

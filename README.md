@@ -91,9 +91,15 @@ class User extends \Illuminate\Database\Eloquent\Model implements \Yoelpc4\Larav
 Example register the media group on your mediable model on Project model
 
 ```php
-$this->addMediaGroup('contract document')
-    ->setMimeTypes('application/pdf')
-    ->setMaxFileLimit(3);
+/**
+ * @inheritDoc
+ */
+public function registerMediaGroups()
+{
+    $this->addMediaGroup('contract document')
+        ->setMimeTypes('application/pdf')
+        ->setMaxFileLimit(3);
+}
 ```
 
 ### Media Conversion Registration
@@ -101,14 +107,20 @@ $this->addMediaGroup('contract document')
 Example register the media conversion on media group registration on User model
 
 ```php
-$this->addMediaGroup('profile image')
-    ->setMimeTypes(['image/jpeg', 'image/png'])
-    ->setMaxFileLimit(1)
-    ->registerMediaConversions(function () {
-        $this->addMediaConversion('square-thumb')
-            ->width(160)
-            ->height(160);
-    });
+/**
+ * @inheritDoc
+ */
+public function registerMediaGroups()
+{
+    $this->addMediaGroup('profile image')
+        ->setMimeTypes(['image/jpeg', 'image/png'])
+        ->setMaxFileLimit(1)
+        ->registerMediaConversions(function () {
+            $this->addMediaConversion('square-thumb')
+                ->width(160)
+                ->height(160);
+        });
+}
 ```
 
 ## Media Group
@@ -140,7 +152,7 @@ Example add a media file from storage path to the first User model on database
 try {
 $path = storage_path('avatar.jpg');
 
-$media = User::first()->addFile()->toMediaGroup('profile image');
+$media = User::first()->addFile($path)->toMediaGroup('profile image');
 } catch (\Illuminate\Contracts\Filesystem\FileNotFoundException $e) {
     throw $e;
 } catch (\Illuminate\Validation\ValidationException $e) {

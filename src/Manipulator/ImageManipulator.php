@@ -45,7 +45,7 @@ class ImageManipulator
      */
     public static function isValid(string $path)
     {
-        return (bool) preg_match('/^image\/*/', mime_content_type($path));
+        return (bool) preg_match('/^image\/(jpe?g|png|gif|webp)/', mime_content_type($path));
     }
 
     /**
