@@ -95,6 +95,8 @@ trait InteractsWithMedia
         collect($this->mediaGroups)->each(function (MediaGroup $mediaGroup) {
             $currentMediaConversions = $this->mediaConversions;
 
+            $this->mediaConversions = [];
+
             ($mediaGroup->mediaConversionsRegistration)();
 
             $newMediaConversions = collect($this->mediaConversions)
