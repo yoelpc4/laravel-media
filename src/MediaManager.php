@@ -143,15 +143,15 @@ class MediaManager
 
         $this->mediable->medias()->save($media);
 
+        $path = $this->filesystem->saveMedia($media, $this->path, $this->filename);
+
         try {
-            if (ImageManipulator::isValid($this->path)) {
-                ImageManipulator::make()->manipulate($this->path);
+            if (ImageManipulator::isValid($path)) {
+                ImageManipulator::make()->manipulate($path);
             }
         } catch (InvalidImageDriver $e) {
             throw $e;
         }
-
-        $this->filesystem->saveMedia($media, $this->path, $this->filename);
 
         try {
             $this->convertMedia($media);

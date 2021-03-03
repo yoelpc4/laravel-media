@@ -27,19 +27,25 @@ class Filesystem
      * Save media file to the disk
      *
      * @param  Media  $media
-     * @param  string  $path
+     * @param  string  $fromPath
      * @param  string  $filename
-     * @return void
+     * @return string
      */
-    public function saveMedia(Media $media, string $path, string $filename)
+    public function saveMedia(Media $media, string $fromPath, string $filename)
     {
         $directory = $this->getMediaDirectory($media);
 
-        $stream = fopen($path, 'r');
+        $stream = fopen($fromPath, 'r');
 
-        $this->filesystem->disk($media->disk)->put("{$directory}/{$filename}", $stream);
+        $disk = $this->filesystem->disk($media->disk);
+
+        $toPath = "{$directory}/{$filename}";
+
+        $disk->put($toPath, $stream);
 
         fclose($stream);
+
+        return $disk->path($toPath);
     }
 
     /**
